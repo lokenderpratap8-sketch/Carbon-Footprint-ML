@@ -251,10 +251,10 @@ class CarbonFootprintPreprocessorV2:
     
     def load_preprocessors(self, input_dir='models'):
         """Load encoders and scaler"""
-        with open(f'{input_dir}/encoders_v2.pkl', 'rb') as f:
+        with open(f'{input_dir}/encoder.pkl', 'rb') as f:
             self.label_encoders = pickle.load(f)
         
-        with open(f'{input_dir}/scaler_v2.pkl', 'rb') as f:
+        with open(f'{input_dir}/scaler.pkl', 'rb') as f:
             self.scaler = pickle.load(f)
         
         print(f"✓ Preprocessors loaded from {input_dir}")
