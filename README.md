@@ -156,74 +156,7 @@ The application will start at `http://127.0.0.1:5000/`
    - Priority actions
    - Personalized recommendations
 
-### Programmatic Usage
 
-```python
-from preprocessing.preprocess import CarbonFootprintPreprocessorV2
-from explainable_ai import ExplainableAIV2
-from recommendation_engine.recommendations import RecommendationEngineV2
-import pickle
-
-# Load models
-with open('models/carbon_regressor.pkl', 'rb') as f:
-    regressor = pickle.load(f)
-
-# Preprocess input
-preprocessor = CarbonFootprintPreprocessorV2()
-preprocessor.load_preprocessors('models')
-
-input_data = {
-    'car_km': 500,
-    'fuel_type': 'petrol',
-    'public_transport_hours': 3,
-    'train_distance': 500,
-    'bike_usage': 2,
-    'cab_usage': 3,
-    'vehicle_type': 'sedan',
-    'vehicle_age': 5,
-    'num_vehicles': 1,
-    'electricity': 400,
-    'household_members': 3,
-    'ac_hours': 4,
-    'renewable_energy': 0,
-    'solar_panels': 0,
-    'lpg_consumption': 15,
-    'home_type': 'apartment',
-    'diet_type': 'mixed',
-    'meat_meals': 7,
-    'dairy_consumption': 2,
-    'packaged_food': 4,
-    'food_waste': 10,
-    'local_food': 40,
-    'flight_hours': 10,
-    'domestic_flights': 2,
-    'international_flights': 1,
-    'hotel_stays': 3,
-    'vacation_frequency': 2,
-    'online_shopping': 200,
-    'fast_fashion': 2,
-    'electronics': 1,
-    'recycling_score': 6,
-    'waste_segregation': 0
-}
-
-processed_input = preprocessor.preprocess_for_prediction(input_data)
-
-# Predict
-prediction = regressor.predict(processed_input)[0]
-print(f"Predicted Emission: {prediction:.2f} kg CO₂")
-
-# Get explanations
-xai = ExplainableAIV2()
-top_contributors = xai.get_top_contributors(processed_input.iloc[0].to_dict())
-print(f"Top Contributors: {top_contributors}")
-
-# Get recommendations
-rec_engine = RecommendationEngineV2()
-recommendations = rec_engine.get_personalized_recommendations('High', top_contributors, {})
-for rec in recommendations:
-    print(f"• {rec}")
-```
 
 ## 📊 Model Performance
 
@@ -350,20 +283,13 @@ Contributions are welcome! Please follow these steps:
 
 This project is open source and available for educational and research purposes.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - XGBoost library for gradient boosting
 - SHAP library for explainable AI
 - Scikit-learn for ML algorithms
 - Flask for web framework
 
-## 📞 Support
-
-For issues or questions:
-1. Check the documentation above
-2. Review model training instructions
-3. Ensure all dependencies are installed
-4. Verify model files exist in `models/` directory
 
 ## 🌱 Environmental Impact
 
