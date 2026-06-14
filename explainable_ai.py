@@ -4,11 +4,11 @@ import pandas as pd
 import shap
 from sklearn.preprocessing import StandardScaler
 
-class ExplainableAIV2:
-    def __init__(self, model_path='models/carbon_regressor_v2.pkl', 
-                 scaler_path='models/scaler_v2.pkl',
-                 metadata_path='models/model_metadata_v2.pkl',
-                 encoders_path='models/encoders_v2.pkl'):
+class ExplainableAI:
+    def __init__(self, model_path='models/carbon_regressor.pkl', 
+                 scaler_path='models/scaler.pkl',
+                 metadata_path='models/model_metadata.pkl',
+                 encoders_path='models/encoder.pkl'):
         """Initialize Explainable AI with loaded model and preprocessors"""
         
         # Load model
@@ -225,7 +225,7 @@ class ExplainableAIV2:
         return summary
 
 if __name__ == "__main__":
-    print("Testing Explainable AI v2...")
+    print("Testing Explainable AI...")
     
     # Sample input with all features
     sample_input = {
@@ -272,7 +272,7 @@ if __name__ == "__main__":
     }
     
     # Initialize Explainable AI
-    xai = ExplainableAIV2()
+    xai = ExplainableAI()
     
     # Get feature importance
     print("\n" + "="*50)
@@ -306,4 +306,4 @@ if __name__ == "__main__":
     print(f"Top Contributors: {summary['top_contributors']}")
     print(f"Category Breakdown: {summary['category_breakdown']}")
     
-    print("\n✓ Explainable AI v2 test completed successfully!")
+    print("\n✓ Explainable AI test completed successfully!")

@@ -4,9 +4,9 @@ import pickle
 import os
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
-from preprocessing.preprocess_v2 import CarbonFootprintPreprocessorV2
+from preprocessing.preprocess import CarbonFootprintPreprocessor
 
-class CarbonFootprintClassifierV2:
+class CarbonFootprintClassifier:
     def __init__(self):
         self.classifier = None
         self.category_mapping = {
@@ -82,7 +82,7 @@ class CarbonFootprintClassifierV2:
         """Save the classifier"""
         os.makedirs(output_dir, exist_ok=True)
         
-        classifier_path = f'{output_dir}/carbon_classifier_v2.pkl'
+        classifier_path = f'{output_dir}/carbon_classifier.pkl'
         with open(classifier_path, 'wb') as f:
             pickle.dump(self.classifier, f)
         
@@ -94,7 +94,7 @@ class CarbonFootprintClassifierV2:
             'reverse_mapping': self.reverse_mapping
         }
         
-        metadata_path = f'{output_dir}/classifier_metadata_v2.pkl'
+        metadata_path = f'{output_dir}/classifier_metadata.pkl'
         with open(metadata_path, 'wb') as f:
             pickle.dump(metadata, f)
         
@@ -102,23 +102,23 @@ class CarbonFootprintClassifierV2:
 
 def main():
     print("="*60)
-    print("CARBON FOOTPRINT CLASSIFIER TRAINING V2")
+    print("CARBON FOOTPRINT CLASSIFIER TRAINING")
     print("Comprehensive Feature Set")
     print("="*60)
     
     # Load dataset
     print("\nLoading dataset...")
-    df = pd.read_csv('dataset/carbon_footprint_dataset_v2.csv')
+    df = pd.read_csv('dataset/carbon_footprint_dataset.csv')
     print(f"✓ Dataset loaded: {len(df)} samples")
     
     # Create emission categories
     print("\nCreating emission categories...")
-    classifier = CarbonFootprintClassifierV2()
+    classifier = CarbonFootprintClassifier()
     df = classifier.create_emission_categories(df)
     
     # Preprocess data
     print("\nPreprocessing data...")
-    preprocessor = CarbonFootprintPreprocessorV2()
+    preprocessor = CarbonFootprintPreprocessor()
     
     # Get emission categories before preprocessing
     y_categories = df['emission_category']

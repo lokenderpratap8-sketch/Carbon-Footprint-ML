@@ -1,7 +1,7 @@
 import pickle
 
-class RecommendationEngineV2:
-    def __init__(self, classifier_metadata_path='models/classifier_metadata_v2.pkl'):
+class RecommendationEngine:
+    def __init__(self, classifier_metadata_path='models/classifier_metadata.pkl'):
         """Initialize recommendation engine with category mappings"""
         
         # Load classifier metadata

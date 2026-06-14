@@ -7,9 +7,9 @@ import os
 # Add project root to path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from preprocessing.preprocess import CarbonFootprintPreprocessorV2
-from explainable_ai import ExplainableAIV2
-from recommendation_engine.recommendations import RecommendationEngineV2
+from preprocessing.preprocess import CarbonFootprintPreprocessor
+from explainable_ai import ExplainableAI
+from recommendation_engine.recommendations import RecommendationEngine
 
 app = Flask(__name__)
 
@@ -17,7 +17,7 @@ app = Flask(__name__)
 print("Loading ML models...")
 try:
     # Load preprocessor
-    preprocessor = CarbonFootprintPreprocessorV2()
+    preprocessor = CarbonFootprintPreprocessor()
     preprocessor.load_preprocessors('models')
     
     # Load regression model
@@ -33,10 +33,10 @@ try:
         classifier_metadata = pickle.load(f)
     
     # Initialize Explainable AI
-    xai = ExplainableAIV2()
+    xai = ExplainableAI()
     
     # Initialize Recommendation Engine
-    recommendation_engine = RecommendationEngineV2()
+    recommendation_engine = RecommendationEngine()
     
     print("✓ All ML models loaded successfully")
 except Exception as e:

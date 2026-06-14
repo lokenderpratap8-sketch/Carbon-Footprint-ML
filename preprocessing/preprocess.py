@@ -5,7 +5,7 @@ import os
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
 
-class CarbonFootprintPreprocessorV2:
+class CarbonFootprintPreprocessor:
     def __init__(self):
         self.label_encoders = {}
         self.scaler = StandardScaler()
@@ -241,10 +241,10 @@ class CarbonFootprintPreprocessorV2:
         """Save encoders and scaler"""
         os.makedirs(output_dir, exist_ok=True)
         
-        with open(f'{output_dir}/encoders_v2.pkl', 'wb') as f:
+        with open(f'{output_dir}/encoder.pkl', 'wb') as f:
             pickle.dump(self.label_encoders, f)
         
-        with open(f'{output_dir}/scaler_v2.pkl', 'wb') as f:
+        with open(f'{output_dir}/scaler.pkl', 'wb') as f:
             pickle.dump(self.scaler, f)
         
         print(f"✓ Preprocessors saved to {output_dir}")
@@ -260,12 +260,12 @@ class CarbonFootprintPreprocessorV2:
         print(f"✓ Preprocessors loaded from {input_dir}")
 
 if __name__ == "__main__":
-    print("Testing preprocessing pipeline v2...")
+    print("Testing preprocessing pipeline...")
     
-    df = pd.read_csv('dataset/carbon_footprint_dataset_v2.csv')
+    df = pd.read_csv('dataset/carbon_footprint_dataset.csv')
     print(f"Dataset loaded: {len(df)} samples")
     
-    preprocessor = CarbonFootprintPreprocessorV2()
+    preprocessor = CarbonFootprintPreprocessor()
     X_train, X_test, y_train, y_test, feature_cols = preprocessor.preprocess_for_training(df)
     
     preprocessor.save_preprocessors()

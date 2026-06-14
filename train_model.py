@@ -6,9 +6,9 @@ from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import xgboost as xgb
-from preprocessing.preprocess_v2 import CarbonFootprintPreprocessorV2
+from preprocessing.preprocess import CarbonFootprintPreprocessor
 
-class CarbonFootprintModelTrainerV2:
+class CarbonFootprintModelTrainer:
     def __init__(self):
         self.models = {}
         self.best_model = None
@@ -100,7 +100,7 @@ class CarbonFootprintModelTrainerV2:
         """Save the best model"""
         os.makedirs(output_dir, exist_ok=True)
         
-        model_path = f'{output_dir}/carbon_regressor_v2.pkl'
+        model_path = f'{output_dir}/carbon_regressor.pkl'
         with open(model_path, 'wb') as f:
             pickle.dump(self.best_model, f)
         
@@ -113,7 +113,7 @@ class CarbonFootprintModelTrainerV2:
             'n_features': len(self.feature_columns)
         }
         
-        metadata_path = f'{output_dir}/model_metadata_v2.pkl'
+        metadata_path = f'{output_dir}/model_metadata.pkl'
         with open(metadata_path, 'wb') as f:
             pickle.dump(metadata, f)
         
@@ -121,18 +121,18 @@ class CarbonFootprintModelTrainerV2:
 
 def main():
     print("="*60)
-    print("CARBON FOOTPRINT MODEL TRAINING V2")
+    print("CARBON FOOTPRINT MODEL TRAINING")
     print("Comprehensive Feature Set (40 Features)")
     print("="*60)
     
     # Load dataset
     print("\nLoading dataset...")
-    df = pd.read_csv('dataset/carbon_footprint_dataset_v2.csv')
+    df = pd.read_csv('dataset/carbon_footprint_dataset.csv')
     print(f"✓ Dataset loaded: {len(df)} samples")
     
     # Preprocess data
     print("\nPreprocessing data...")
-    preprocessor = CarbonFootprintPreprocessorV2()
+    preprocessor = CarbonFootprintPreprocessor()
     X_train, X_test, y_train, y_test, feature_cols = preprocessor.preprocess_for_training(df)
     print(f"✓ Data preprocessed")
     
@@ -140,7 +140,7 @@ def main():
     preprocessor.save_preprocessors()
     
     # Initialize trainer
-    trainer = CarbonFootprintModelTrainerV2()
+    trainer = CarbonFootprintModelTrainer()
     trainer.feature_columns = feature_cols
     
     # Train all models
