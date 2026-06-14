@@ -239,7 +239,7 @@ class RecommendationEngine:
             ]
         }
         
-        print("✓ Recommendation Engine V2 initialized")
+        print("✓ Recommendation Engine initialized")
     
     def get_category_recommendations(self, category):
         """Get recommendations based on emission category"""
@@ -344,10 +344,10 @@ class RecommendationEngine:
         return priority_actions
 
 if __name__ == "__main__":
-    print("Testing Recommendation Engine V2...")
+    print("Testing Recommendation Engine...")
     
     # Initialize
-    engine = RecommendationEngineV2()
+    engine = RecommendationEngine()
     
     # Test category recommendations
     print("\n" + "="*50)
@@ -400,4 +400,4 @@ if __name__ == "__main__":
     for action in priorities:
         print(f"  {action}")
     
-    print("\n✓ Recommendation Engine V2 test completed successfully!")
+    print("\n✓ Recommendation Engine test completed successfully!")

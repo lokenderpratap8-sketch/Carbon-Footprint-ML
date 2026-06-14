@@ -46,10 +46,10 @@ carbon Footprint/
 │   └── classifier_metadata.pkl     # Classification model metadata
 │
 ├── preprocessing/
-│   └── preprocess.py               # Data preprocessing pipeline (V2)
+│   └── preprocess.py               # Data preprocessing pipeline
 │
 ├── recommendation_engine/
-│   └── recommendations.py          # Personalized recommendation engine (V2)
+│   └── recommendations.py          # Personalized recommendation engine
 │
 ├── templates/
 │   └── index.html                  # Modern web interface with Tabler Icons
@@ -251,19 +251,19 @@ This will:
 
 ### Key Classes
 
-#### `CarbonFootprintPreprocessorV2`
+#### `CarbonFootprintPreprocessor`
 - `preprocess_for_training(df)`: Prepare data for model training
 - `preprocess_for_prediction(input_data)`: Prepare single input for prediction
 - `save_preprocessors(output_dir)`: Save encoder and scaler
 - `load_preprocessors(input_dir)`: Load encoder and scaler
 
-#### `ExplainableAIV2`
+#### `ExplainableAI`
 - `get_feature_importance()`: Get global feature importance
 - `get_shap_explanation(input_data)`: Get SHAP values for prediction
 - `get_top_contributors(input_data, top_n=4)`: Get top N contributors
 - `get_category_breakdown(input_data)`: Get category-wise emission breakdown
 
-#### `RecommendationEngineV2`
+#### `RecommendationEngine`
 - `get_category_recommendations(category)`: Get category-based recommendations
 - `get_feature_specific_recommendations(top_contributors)`: Get feature-specific recommendations
 - `get_personalized_recommendations(category, top_contributors, category_breakdown)`: Get complete recommendations
