@@ -14,7 +14,7 @@ This project transforms a traditional formula-based carbon footprint calculator 
 
 ### Feature Categories (31 Base Features)
 
-The system analyzes carbon footprint across five comprehensive categories:
+The system analyzes carbon footprint across five comprehensive categories;
 
 1. **Transportation** (8 features): Car travel, fuel type, public transport, train travel, bike usage, cab/rideshare, vehicle type, vehicle age, number of vehicles
 2. **Household Energy** (7 features): Electricity consumption, household members, AC usage, LPG consumption, renewable energy, solar panels, home type
