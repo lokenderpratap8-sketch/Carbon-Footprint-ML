@@ -139,7 +139,7 @@ The application will start at `http://127.0.0.1:5000/`
 
 ### Web Interface
 
-1. Open browser and navigate to `http://127.0.0.1:5000/`
+1. Open browser and navigate to carbon-footprint-gray.vercel.app
 2. Enter your lifestyle data across 5 categories:
    - **Transportation**: Car travel, fuel type, public transport, train travel, bike usage, cab/rideshare, vehicle type, vehicle age, number of vehicles
    - **Household Energy**: Electricity consumption, household members, AC usage, LPG consumption, renewable energy, solar panels, home type
